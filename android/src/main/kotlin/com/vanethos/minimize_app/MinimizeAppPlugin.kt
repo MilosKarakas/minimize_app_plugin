@@ -15,7 +15,7 @@ import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
 /** MinimizeAppPlugin */
 public class MinimizeAppPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
-  public var activity : Activity? = null
+  private var activity : Activity? = null
 
   override fun onDetachedFromActivity() {}
 
@@ -31,7 +31,7 @@ public class MinimizeAppPlugin(): FlutterPlugin, MethodCallHandler, ActivityAwar
 
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    val channel = MethodChannel(flutterPluginBinding?.getFlutterEngine()?.getDartExecutor(), "minimize_app")
+    val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "minimize_app")
     channel.setMethodCallHandler(this)
   }
 
