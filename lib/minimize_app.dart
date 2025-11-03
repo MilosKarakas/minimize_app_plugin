@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class MinimizeApp {
-  static const MethodChannel _channel =
-      const MethodChannel('minimize_app');
+  static const MethodChannel _channel = MethodChannel('minimize_app');
 
   static Future<void> minimizeApp() async {
-    await _channel.invokeMethod('minimize_app#minimize').catchError((error) => print("Error: $error"));
+    await _channel
+        .invokeMethod('minimizeApp')
+        .catchError((dynamic error) => debugPrint("Error: $error"));
   }
 }
